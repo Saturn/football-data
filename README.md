@@ -56,20 +56,20 @@ for match in matches[-10:]:
     away_team = match['awayTeam']['name']
     home_goals = match['score']['fullTime']['homeTeam']
     away_goals = match['score']['fullTime']['awayTeam']
-    print("{} {}-{} {}".format(home_team,
+    print("{} [{}-{}] {}".format(home_team,
                                home_goals,
                                away_goals,
                                away_team))
 ```
 ```
-Watford FC 2-1 Tottenham Hotspur FC
-Tottenham Hotspur FC 1-2 Liverpool FC
-Manchester City FC 3-0 Fulham FC
-Newcastle United FC 1-2 Arsenal FC
-Chelsea FC 4-1 Cardiff City FC
-Huddersfield Town AFC 0-1 Crystal Palace FC
-AFC Bournemouth 4-2 Leicester City FC
-Watford FC 1-2 Manchester United FC
-Wolverhampton Wanderers FC 1-0 Burnley FC
-Everton FC 1-3 West Ham United FC
+Watford FC [2-1] Tottenham Hotspur FC
+Tottenham Hotspur FC [1-2] Liverpool FC
+Manchester City FC [3-0] Fulham FC
+Newcastle United FC [1-2] Arsenal FC
+Chelsea FC [4-1] Cardiff City FC
+Huddersfield Town AFC [0-1] Crystal Palace FC
+AFC Bournemouth [4-2] Leicester City FC
+Watford FC [1-2] Manchester United FC
+Wolverhampton Wanderers FC [1-0] Burnley FC
+Everton FC [1-3] West Ham United FC
 ```
