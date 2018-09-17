@@ -68,7 +68,7 @@ class FootballData:
         return rv.json()
 
     def get_competition_teams(self, id, season=None):
-        rv = requests.get(self.base_url + 'competitions/' + str(id) + '/matches',
+        rv = requests.get(self.base_url + 'competitions/' + str(id) + '/teams',
                           params={'season': season},
                           headers=self.headers)
         check_response(rv)
@@ -78,7 +78,7 @@ class FootballData:
         rv = requests.get(self.base_url + 'competitions/' + str(id) + '/standings',
                           headers=self.headers)
         check_response(rv)
-        return rv.json()
+        return rv.json()['standings'][0]['table']
 
     def get_competition_scorers(self, id):
         rv = requests.get(self.base_url + 'competitions/' + str(id) + '/scorers',
@@ -86,18 +86,30 @@ class FootballData:
         check_response(rv)
         return rv.json()
 
+    def get_competition_matches(self, id, status=None, stage=None,
+                                group=None, date_from=None, date_to=None):
+        rv = requests.get(self.base_url + 'competitions/' + str(id) + '/matches',
+                          params=dict(status=status,
+                                      stage=stage,
+                                      group=group,
+                                      dateFrom=date_from,
+                                      dateTo=date_to),
+                          headers=self.headers)
+        check_response(rv)
+        return rv.json()['matches']
+
     def get_match(self, competitions=None, status=None,
-                  stage=None, group=None, dateFrom=None, dateTo=None):
+                  stage=None, group=None, date_from=None, date_to=None):
         rv = requests.get(self.base_url + 'matches',
                           params=dict(competitions=competitions,
                                       status=status,
                                       stage=stage,
                                       group=group,
-                                      dateFrom=dateFrom,
-                                      dateTo=dateTo),
+                                      dateFrom=date_from,
+                                      dateTo=date_to),
                           headers=self.headers)
         check_response(rv)
-        return rv
+        return rv.json()
 
     def get_teams(self, competition=None):
         if competition:
