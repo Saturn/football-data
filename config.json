@@ -1,0 +1,4 @@
+{
+	"base_url": "http://api.football-data.org/v2/",
+	"auth_token": "YOUR_AUTH_TOKEN"
+}
